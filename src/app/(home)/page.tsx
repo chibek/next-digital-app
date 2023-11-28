@@ -6,7 +6,8 @@ export default async function Home() {
   const users = await data.json() as User[];
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-4">
+      <h1 className="text-4xl font-bold">Users</h1>
       <section className="flex flex-col w-full gap-4">
         {users.map((user) => (
           <UserCard key={user.id} user={user} />
