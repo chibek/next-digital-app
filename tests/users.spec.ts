@@ -8,6 +8,8 @@ test('Validate Home page', async ({ page }) => {
 test('Validate user list', async ({ page }) => {
   await page.goto('http://localhost:3000/');
 
-  const links = await page.getByRole('link').all();
-  await expect(links.length).toBeGreaterThanOrEqual(1);
+  await expect(await page.getByRole('link').count()).toBeGreaterThanOrEqual(1);
+  await page.getByRole('link',{name: "Leanne Graham"}).click();
+  await page.waitForURL('**/users/**');
+  expect(await page.getByText("username: Bret").count()).toBeGreaterThanOrEqual(1); 
 });
